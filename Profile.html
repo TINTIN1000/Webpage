@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Profile</title>
+    <link rel="stylesheet" href="Style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+        header {
+            background-color: #9e9d9d5d;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            color: #ff0000;
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+}
+
+        section {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #791818;
+        }
+
+        li.skill-item {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./Profile.jpg" alt="" height="200px" width="200px" style="border-radius: 50%;">
+        <h1 style="height: 30px; height: auto; text-align: center; color: #000000;">Byron Museza</h1>
+        <p>Software Engineer</p>
+        <nav>
+            <div class="nav-links">
+                <a href="#Home">Home</a>
+                <a href="#About">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#Contact">Contact</a>
+            </div>
+            
+        </nav>
+        <main>
+            <section id="Home">
+                <h2>About Me</h2>
+                
+                    <p>Hello! I'm Byron, a passionate <strong>software engineer</strong> with experience in web development and software design. I love creating efficient and scalable applications.</p>
+                
+                
+            </section>
+            <section id="About">
+                <h2>About</h2>
+               
+                    <p>I have a strong background in computer science and have worked on various projects ranging from web applications to web development projects. My goal is to continuously improve my skills and contribute to innovative projects.</p>
+                
+                
+            </section>
+            <section id="skills">
+                <h2>Skills</h2>
+                <ul >
+                    <li class="skill-item"><strong>Python</strong></li>
+                    <li class="skill-item"><strong>JavaScript</strong></li>
+                    <li class="skill-item"><strong>React</strong></li>
+                </ul>
+            </section>
+            <section id="Contact">
+                <h2>Contact</h2>
+                <p>You can reach me via email at musezat@africau.edu</p>
+            </section>
+        </main>
+    </header>
+</body>
+</html>

@@ -1,0 +1,11 @@
+h2{
+    color: #700202;
+    margin-top: 20px;
+    text-align: center;
+    }   
+nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
