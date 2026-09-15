@@ -3,80 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal profile page for Byron Museza, a software engineer specializing in web development and scalable application design.">
+
+    <meta name="description"
+          content="Personal profile page for Byron Museza, a software engineer specializing in web development and scalable application design.">
+
     <title>Byron Museza | Software Engineer</title>
 </head>
+
 <body>
 
     <header>
-        <img src="Profile.jpg" alt="Portrait photo of Byron Museza" width="200" height="200">
-        <h1>Byron Museza</h1>
-        <p>Software Engineer &mdash; building efficient, scalable web applications.</p>
+        <img src="Profile.jpg"
+             alt="Portrait of Byron Museza"
+             width="200"
+             height="200">
 
-        <nav aria-label="Primary">
-            <div class="nav-links">
+        <h1>Byron Museza</h1>
+
+        <p>Software Engineer — building efficient, scalable web applications.</p>
+
+        <nav aria-label="Primary navigation">
+            <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-            </div>
+            </ul>
         </nav>
     </header>
 
     <main>
 
+        <!-- Home Section -->
         <section id="home">
             <h2>About Me</h2>
-            <p>Hello! I'm Byron, a passionate <strong>software engineer</strong> with experience in web development and software design. I love creating efficient and scalable applications.</p>
+
+            <p>
+                Hello! I'm Byron, a passionate
+                <strong>software engineer</strong> with an interest in
+                web development and software design. I enjoy creating
+                efficient, reliable, and scalable applications.
+            </p>
         </section>
 
+        <!-- Background Section -->
         <section id="about">
             <h2>Background</h2>
-            <p>I have a strong background in computer science and have worked on various projects ranging from web applications to full web development builds. My goal is to continuously improve my skills and contribute to innovative projects.</p>
+
+            <p>
+                I have a strong background in computer science and enjoy
+                working on projects ranging from web applications to
+                complete software development solutions. My goal is to
+                continuously improve my technical skills and contribute
+                to innovative projects.
+            </p>
+
+            <article>
+                <h3>My Approach to Software Development</h3>
+
+                <p>
+                    I believe good software should be simple, useful,
+                    accessible, and easy to maintain. I focus on learning
+                    modern technologies while developing solutions that
+                    solve real-world problems.
+                </p>
+            </article>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills">
             <h2>Skills</h2>
+
             <ul>
                 <li>Python</li>
                 <li>JavaScript</li>
                 <li>React</li>
+                <li>HTML5</li>
+                <li>CSS3</li>
             </ul>
         </section>
 
+        <!-- Currently Learning -->
         <aside>
             <h2>Currently Learning</h2>
-            <p>I am in the process of learning Web Technologies</p>
+
+            <p>
+                I am currently learning Web Technologies to strengthen
+                my knowledge of modern web development and improve my
+                ability to build responsive and accessible websites.
+            </p>
         </aside>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Me</h2>
+
+            <p>
+                If you would like to get in touch, complete the form below.
+            </p>
+
             <form action="#" method="post">
 
                 <p>
                     <label for="name">Full Name</label><br>
-                    <input type="text" id="name" name="name" required minlength="2"
-                           placeholder="Jane Doe">
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        minlength="2"
+                        autocomplete="name"
+                        placeholder="Jane Doe">
                 </p>
 
                 <p>
                     <label for="email">Email Address</label><br>
-                    <input type="email" id="email" name="email" required
-                           placeholder="jane@example.com">
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        autocomplete="email"
+                        placeholder="jane@example.com">
                 </p>
 
                 <p>
                     <label for="phone">Phone Number</label><br>
-                    <input type="tel" id="phone" name="phone"
-                           pattern="[0-9+\-\s]{7,15}"
-                           title="Enter a valid phone number (7 to 15 digits; spaces, + and - allowed)"
-                           placeholder="e.g. 0771234567">
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        pattern="[0-9+\-\s]{7,15}"
+                        title="Enter a valid phone number using 7 to 15 characters. Numbers, spaces, + and - are allowed."
+                        autocomplete="tel"
+                        placeholder="e.g. 0771234567">
                 </p>
 
                 <p>
                     <label for="message">Message</label><br>
-                    <textarea id="message" name="message" rows="5" required minlength="10"
-                              placeholder="Write your message here..."></textarea>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        required
+                        minlength="10"
+                        placeholder="Write your message here..."></textarea>
                 </p>
 
                 <p>
@@ -90,8 +165,15 @@
 
     <footer>
         <p>&copy; 2026 Byron Museza. All rights reserved.</p>
-        <p>Email: <a href="mailto:musezat@africau.edu">musezat@africau.edu</a></p>
+
+        <p>
+            Email:
+            <a href="mailto:musezat@africau.edu">
+                musezat@africau.edu
+            </a>
+        </p>
     </footer>
 
 </body>
 </html>
+
