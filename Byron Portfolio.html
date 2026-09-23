@@ -9,7 +9,20 @@
 
     <title>Byron Museza | Software Engineer</title>
 </head>
+    <script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
 
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => e.target.classList.toggle('is-visible', e.isIntersecting));
+  }, { threshold: 0.15 });
+  document.querySelectorAll('section').forEach(s => {
+    s.classList.add('reveal');
+    observer.observe(s);
+  });
+</script>
 <body>
 
     <header>
@@ -174,7 +187,3 @@
 
 </body>
 </html>
-<<<<<<< HEAD
-=======
-
->>>>>>> 8d39a368fea84a813fbc12f78d8a9726244dc8fd

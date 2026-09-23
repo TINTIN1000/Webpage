@@ -1,0 +1,265 @@
+/* =============================================================
+   BYRON MUSEZA — PORTFOLIO STYLESHEET
+   A formal, composed look: navy-ink hero, warm paper background,
+   one restrained pine-green accent. Nav is transparent over the
+   hero image and turns solid once you scroll past it.
+   ============================================================= */
+
+/* ---- 1. Fonts ------------------------------------------------
+   Two families, clearly distinct roles:
+   - Source Serif 4  -> headings (the "composed" voice)
+   - Inter           -> body copy, nav, form (the "simple, legible" voice) */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ---- 2. Design tokens ----------------------------------------
+   Every color, spacing and timing value lives here once, so the
+   rest of the file never hardcodes a raw value. */
+:root {
+  --color-ink: #1B2430;         /* near-black navy, main text */
+  --color-paper: #F7F5F1;       /* warm off-white page background */
+  --color-paper-alt: #EFEBE3;   /* slightly deeper panel background */
+  --color-accent: #3E6259;      /* pine green — the one accent color */
+  --color-accent-soft: #A9C4BC; /* pale accent for borders/tags */
+  --color-border: #D8D3C9;
+
+  --font-head: 'Source Serif 4', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --space-s: 0.75rem;
+  --space-m: 1.5rem;
+  --space-l: 3rem;
+  --space-xl: 6rem;
+
+  --radius: 4px;
+  --transition: 0.35s ease;
+  --nav-height: 4.5rem;
+}
+
+/* ---- 3. Reset --------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+
+/* ---- 4. Base typography ------------------------------------------ */
+h1, h2, h3 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; margin: 0 0 var(--space-m); }
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-s); }
+h3 { font-size: 1.25rem; color: var(--color-accent); }
+p { max-width: 65ch; }
+
+/* ---- 5. Hero / header ---------------------------------------------
+   The <header> in the HTML holds the photo, name, tagline AND the
+   nav, so the whole header becomes the hero block with a background
+   image and a dark wash so white text stays readable. */
+header {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-l) var(--space-m);
+  color: var(--color-paper);
+  background:
+    linear-gradient(rgba(15, 20, 28, 0.72), rgba(15, 20, 28, 0.72)),
+    url('Background 1.avif') center/cover no-repeat;
+  /* Swap 'hero-bg.jpg' for your own photo/workspace image.
+     No image file? The gradient alone still gives a solid navy hero. */
+}
+header img {
+  border-radius: 50%;
+  border: 3px solid var(--color-paper);
+  margin-bottom: var(--space-m);
+}
+header p { color: var(--color-accent-soft); }
+
+/* ---- 6. Navigation --------------------------------------------
+   Sits inside the hero with a transparent background so the hero
+   image shows through. JS (see note below the file) toggles the
+   .scrolled class once the page scrolls past the hero, giving the
+   nav a solid backdrop for legibility over page content. */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition);
+  z-index: 100;
+}
+nav.scrolled {
+  background: rgba(247, 245, 241, 0.95);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+nav ul { display: flex; gap: var(--space-l); }
+nav a {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--color-paper);
+  padding: var(--space-s) 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition), color var(--transition);
+}
+nav.scrolled a { color: var(--color-ink); }
+nav a:hover, nav a:focus-visible { border-color: var(--color-accent); }
+
+/* ---- 7. Mobile nav toggle (pure CSS, no JS needed) ----------------
+   Pair this with a checkbox + label in the HTML:
+   <input type="checkbox" id="nav-toggle" class="nav-toggle">
+   <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+   The checked state drives the slide-in menu below. */
+.nav-toggle { display: none; }
+.nav-toggle-label {
+  display: none;
+  position: fixed;
+  top: 1.1rem; right: 1.5rem;
+  z-index: 110;
+  width: 28px; height: 20px;
+  cursor: pointer;
+}
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  position: absolute;
+  width: 28px; height: 2px;
+  background: var(--color-paper);
+  transition: transform var(--transition), background var(--transition);
+}
+nav.scrolled .nav-toggle-label span,
+nav.scrolled .nav-toggle-label span::before,
+nav.scrolled .nav-toggle-label span::after { background: var(--color-ink); }
+.nav-toggle-label span { top: 9px; }
+.nav-toggle-label span::before { content: ""; top: -8px; }
+.nav-toggle-label span::after { content: ""; top: 8px; }
+.nav-toggle:checked ~ .nav-toggle-label span { background: transparent; }
+.nav-toggle:checked ~ .nav-toggle-label span::before { transform: rotate(45deg) translate(6px, 7px); }
+.nav-toggle:checked ~ .nav-toggle-label span::after { transform: rotate(-45deg) translate(6px, -7px); }
+
+@media (max-width: 700px) {
+  .nav-toggle-label { display: block; }
+  nav ul {
+    position: fixed;
+    top: 0; right: 0;
+    height: 100vh;
+    width: min(75vw, 320px);
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-m);
+    background: rgba(27, 36, 48, 0.97);
+    transform: translateX(100%);
+    transition: transform var(--transition);
+  }
+  /* ul is nested INSIDE nav, not a direct sibling of the checkbox,
+     so the ~ combinator has to reach it via "nav ul", not "ul" alone. */
+  .nav-toggle:checked ~ nav ul { transform: translateX(0); }
+  nav a { color: var(--color-paper); }
+}
+
+/* ---- 8. Scroll-in animation for sections ---------------------------
+   Sections start faded/offset, then reveal. Add class="reveal" to
+   each <section> in the HTML. A short JS snippet (below the file)
+   adds .is-visible when the section enters the viewport — CSS
+   alone can't detect scroll position, only render the transition. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Bonus: a pure-CSS reveal for direct nav clicks, no JS required.
+   When a section becomes the URL's #target (i.e. you click a nav
+   link), it briefly animates in on its own. */
+section:target { animation: target-slide-in 0.6s ease; }
+@keyframes target-slide-in {
+  from { transform: translateX(-16px); opacity: 0.4; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+/* Respect people who've asked their OS for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, section:target { animation: none; transition: none; opacity: 1; transform: none; }
+}
+
+/* ---- 9. Section layout ------------------------------------------- */
+main { max-width: 900px; margin: 0 auto; padding: 0 var(--space-m); }
+section, aside { padding: var(--space-xl) 0; border-bottom: 1px solid var(--color-border); }
+section:first-of-type { padding-top: calc(var(--nav-height) + var(--space-l)); }
+article { margin-top: var(--space-m); padding-left: var(--space-m); border-left: 2px solid var(--color-accent-soft); }
+
+/* ---- 10. Skills list — styled as tags -----------------------------
+   Monospace here is a deliberate nod to the content itself (these
+   ARE code/tech terms), not decoration for its own sake. */
+#skills ul { display: flex; flex-wrap: wrap; gap: var(--space-s); }
+#skills li {
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-accent-soft);
+  border-radius: var(--radius);
+  color: var(--color-accent);
+  background: var(--color-paper-alt);
+}
+
+/* ---- 11. Aside ("Currently Learning") ------------------------------ */
+aside {
+  background: var(--color-paper-alt);
+  padding: var(--space-l);
+  border-radius: var(--radius);
+  border-bottom: none;
+}
+
+/* ---- 12. Contact form --------------------------------------------- */
+form { max-width: 500px; margin-top: var(--space-m); }
+label { font-size: 0.9rem; font-weight: 500; }
+input, textarea {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition);
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+button[type="submit"] {
+  padding: 0.85rem 2rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-paper);
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+button[type="submit"]:hover,
+button[type="submit"]:focus-visible { background: var(--color-ink); }
+
+/* ---- 13. Footer ----------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: var(--space-l) var(--space-m);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+}
+footer a { border-bottom: 1px solid var(--color-accent-soft); }
