@@ -8,27 +8,34 @@
           content="Personal profile page for Byron Museza, a software engineer specializing in web development and scalable application design.">
 
     <title>Byron Museza | Software Engineer</title>
-    <link rel="stylesheet" href="Style.css">
+
+    <!-- Tailwind (browser build) — used for the header/nav and Contact form -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- My own CSS — used for everything else (tokens, cards, grid, footer, media queries) -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <header>
+    <!-- TAILWIND SECTION 1: header + nav -->
+    <header class="flex flex-col items-center gap-4 bg-slate-900 px-4 py-8 text-center text-white sm:py-10">
         <img src="1.jpeg"
              alt="Portrait of Byron Museza"
              width="200"
-             height="250">
+             height="250"
+             class="h-auto w-36 rounded-xl border-4 border-indigo-400 object-cover sm:w-48">
 
-        <h1>Byron Museza</h1>
+        <h1 class="text-3xl font-bold sm:text-4xl">Byron Museza</h1>
 
-        <p>Software Engineer — building efficient, scalable web applications.</p>
+        <p class="max-w-prose text-slate-300">Software Engineer — building efficient, scalable web applications.</p>
 
         <nav aria-label="Primary navigation">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="flex flex-wrap justify-center gap-2 sm:gap-4">
+                <li><a class="rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-500 sm:text-base" href="#home">Home</a></li>
+                <li><a class="rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-500 sm:text-base" href="#about">About</a></li>
+                <li><a class="rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-500 sm:text-base" href="#skills">Skills</a></li>
+                <li><a class="rounded-md px-3 py-2 text-sm font-medium hover:bg-indigo-500 sm:text-base" href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -71,7 +78,7 @@
             </article>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills Section (CSS Grid in styles.css) -->
         <section id="skills">
             <h2>Skills</h2>
 
@@ -94,17 +101,17 @@
             </p>
         </aside>
 
-        <!-- Contact Section -->
+        <!-- TAILWIND SECTION 2: Contact form -->
         <section id="contact">
             <h2>Contact Me</h2>
             <p>
                 If you would like to get in touch, complete the form below.
             </p>
 
-            <form action="#" method="post">
+            <form action="#" method="post" class="flex flex-col gap-4 md:max-w-xl">
 
-                <p>
-                    <label for="name">Full Name</label><br>
+                <div class="flex flex-col gap-1">
+                    <label for="name" class="font-medium">Full Name</label>
 
                     <input
                         type="text"
@@ -113,11 +120,12 @@
                         required
                         minlength="2"
                         autocomplete="name"
-                        placeholder="Jane Doe">
-                </p>
+                        placeholder="Jane Doe"
+                        class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
 
-                <p>
-                    <label for="email">Email Address</label><br>
+                <div class="flex flex-col gap-1">
+                    <label for="email" class="font-medium">Email Address</label>
 
                     <input
                         type="email"
@@ -125,11 +133,12 @@
                         name="email"
                         required
                         autocomplete="email"
-                        placeholder="jane@example.com">
-                </p>
+                        placeholder="jane@example.com"
+                        class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
 
-                <p>
-                    <label for="phone">Phone Number</label><br>
+                <div class="flex flex-col gap-1">
+                    <label for="phone" class="font-medium">Phone Number</label>
 
                     <input
                         type="tel"
@@ -138,11 +147,12 @@
                         pattern="[0-9+\-\s]{7,15}"
                         title="Enter a valid phone number using 7 to 15 characters. Numbers, spaces, + and - are allowed."
                         autocomplete="tel"
-                        placeholder="e.g. 0771234567">
-                </p>
+                        placeholder="e.g. 0771234567"
+                        class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
 
-                <p>
-                    <label for="message">Message</label><br>
+                <div class="flex flex-col gap-1">
+                    <label for="message" class="font-medium">Message</label>
 
                     <textarea
                         id="message"
@@ -150,18 +160,23 @@
                         rows="5"
                         required
                         minlength="10"
-                        placeholder="Write your message here..."></textarea>
-                </p>
+                        placeholder="Write your message here..."
+                        class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
 
-                <p>
-                    <button type="submit">Send Message</button>
-                </p>
+                <div>
+                    <button type="submit"
+                            class="w-full rounded-lg bg-indigo-600 px-6 py-3 font-semibold text-white hover:bg-indigo-700 sm:w-auto">
+                        Send Message
+                    </button>
+                </div>
 
             </form>
         </section>
 
     </main>
 
+    <!-- Footer (Flexbox in styles.css) -->
     <footer>
         <p>&copy; 2026 Byron Museza. All rights reserved.</p>
 
@@ -175,7 +190,3 @@
 
 </body>
 </html>
-<<<<<<< HEAD
-=======
-
->>>>>>> 8d39a368fea84a813fbc12f78d8a9726244dc8fd
